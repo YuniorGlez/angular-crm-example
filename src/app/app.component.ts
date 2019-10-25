@@ -22,7 +22,13 @@ export class AppComponent {
     this.userService.createUser(this.newUser)
       .then(newUser => {
         this.users.push(newUser);
-        this.newUser = { name: "", email: "", observations: "", photoUrl: "", contacted: false}
+        this.newUser = { name: "", email: "", observations: "", photoUrl: "", contacted: false }
+      })
+  }
+  deleteMe(id: string) {
+    this.userService.deleteUser(id)
+      .then(deletedUser => {
+        this.users = this.users.filter(u => u.id != id);
       })
   }
 
